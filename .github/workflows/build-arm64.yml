@@ -22,10 +22,10 @@ jobs:
         with:
           ref: ${{ github.event.inputs.ref }}
 
-      - name: Set up Rust
-        uses: actions/setup-rust@v1
+      - name: Setup toolchain
+        uses: dtolnay/rust-toolchain@stable
         with:
-          rust-version: stable
+          toolchain: stable
 
       - name: Install Dependencies
         run: |
