@@ -1,0 +1,43 @@
+name: Build Neovide on ARM64 Ubuntu
+
+on:
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: "Git ref to build (e.g., refs/tags/0.12.1)"
+        required: true
+        default: "refs/tags/0.12.1"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-22.04]
+        arch: [arm64]
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.inputs.ref }}
+
+      - name: Set up Rust
+        uses: actions/setup-rust@v1
+        with:
+          rust-version: stable
+
+      - name: Install Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libxcb-render0-dev libxcb-shape0-dev libxcb-xfixes0-dev
+
+      - name: Build Neovide
+        run: |
+          cargo build --release
+
+      - name: Archive Build Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: neovide-artifacts
+          path: target/release
