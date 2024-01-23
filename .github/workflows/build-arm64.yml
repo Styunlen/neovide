@@ -1,9 +1,12 @@
 name: Build Neovide on ARM64 Ubuntu
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: "Git ref to build (e.g., refs/tags/0.12.1)"
+        required: true
+        default: "refs/tags/0.12.1"
 
 jobs:
   build:
@@ -17,7 +20,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
         with:
-          ref: 'refs/tags/0.12.1'
+          ref: ${{ github.event.inputs.ref }}
 
       - name: Set up Rust
         uses: actions/setup-rust@v1
@@ -32,3 +35,9 @@ jobs:
       - name: Build Neovide
         run: |
           cargo build --release
+
+      - name: Archive Build Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: neovide-artifacts
+          path: target/release # 指定编译结果的路径
