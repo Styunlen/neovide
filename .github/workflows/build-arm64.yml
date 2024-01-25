@@ -35,7 +35,7 @@ jobs:
 
       - name: Build Neovide
         run: |
-          cargo build --release --keep
+          cargo build --release --target aarch64-unknown-linux-gnu
 
       - name: Archive Build Artifacts
         uses: actions/upload-artifact@v2
