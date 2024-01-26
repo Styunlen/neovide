@@ -33,6 +33,25 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y \
+          appstream \
+          ca-certificates \
+          cmake \
+          curl \
+          file \
+          g++-multilib \
+          gcc-multilib \
+          git \
+          gnupg \
+          libbz2-dev \
+          libexpat1-dev \
+          libfontconfig-dev \
+          libfreetype6-dev \
+          libfuse2 \
+          libpng16-16 \
+          libssl-dev \
+          libxcb-composite0-dev \
+          libxi-dev \
+          pkg-config \
           clang \
           libxcb-render0-dev \
           libxcb-shape0-dev \
@@ -48,7 +67,6 @@ jobs:
           libxkbcommon-dev \
           libxkbcommon-x11-dev \
           libxkbfile-dev \
-          build-essential \
           libc++-dev \
           libc++abi-dev
 
