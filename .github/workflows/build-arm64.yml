@@ -32,7 +32,23 @@ jobs:
       - name: Install Dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y libxcb-render0-dev libxcb-shape0-dev libxcb-xfixes0-dev
+          sudo apt-get install -y \
+          clang \
+          libxcb-render0-dev \
+          libxcb-shape0-dev \
+          libxcb-xfixes0-dev \
+          libfontconfig1-dev \
+          libfreetype6-dev \
+          libx11-xcb-dev \
+          libxcb-keysyms1-dev \
+          libxcb-randr0-dev \
+          libxcb-composite0-dev \
+          libxcb-image0-dev \
+          libxcb-present-dev \
+          libxkbcommon-dev \
+          libxkbcommon-x11-dev \
+          libxkbfile-dev \
+          build-essential
 
       - name: Build Neovide
         run: |
