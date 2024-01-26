@@ -48,7 +48,9 @@ jobs:
           libxkbcommon-dev \
           libxkbcommon-x11-dev \
           libxkbfile-dev \
-          build-essential
+          build-essential \
+          libc++-dev \
+          libc++abi-dev
 
       - name: Build Neovide
         run: |
